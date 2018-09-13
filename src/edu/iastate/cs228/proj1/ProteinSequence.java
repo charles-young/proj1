@@ -1,11 +1,8 @@
 package edu.iastate.cs228.proj1;
 
 /*
- * @author
+ * @author Charles Young
  */
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class ProteinSequence extends Sequence {
     /**
@@ -26,14 +23,12 @@ public class ProteinSequence extends Sequence {
      */
     @Override
     public boolean isValidLetter(char aa) {
-        Set<Character> illegalChars = new HashSet<>();
-        illegalChars.add('b');
-        illegalChars.add('j');
-        illegalChars.add('o');
-        illegalChars.add('u');
-        illegalChars.add('x');
-        illegalChars.add('z');
-
-        return !illegalChars.contains(Character.toLowerCase(aa)) && Character.isAlphabetic(aa);
+        char[] illegalChars = "bjouxzBJOUXZ".toCharArray();
+        for (char c : illegalChars) {
+            if (c != aa && Character.isAlphabetic(aa)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

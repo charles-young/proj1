@@ -1,11 +1,8 @@
 package edu.iastate.cs228.proj1;
 
 /*
- * @author
+ * @author Charles Young
  */
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class DNASequence extends Sequence {
     /**
@@ -26,13 +23,12 @@ public class DNASequence extends Sequence {
      */
     @Override
     public boolean isValidLetter(char let) {
-        Set<Character> illegalChars = new HashSet<>();
-        illegalChars.add('a');
-        illegalChars.add('c');
-        illegalChars.add('g');
-        illegalChars.add('t');
-
-        return illegalChars.contains(Character.toLowerCase(let));
+        char[] legalChars = "acgtACGT".toCharArray();
+        for (char c : legalChars) {
+            if (c == let) {
+                return true;
+            }
+        }
+        return false;
     }
-
 }

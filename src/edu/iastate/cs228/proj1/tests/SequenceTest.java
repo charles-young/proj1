@@ -1,5 +1,10 @@
-package edu.iastate.cs228.proj1;
+package edu.iastate.cs228.proj1.tests;
 
+/*
+ * @author Charles Young
+ */
+
+import edu.iastate.cs228.proj1.Sequence;
 import org.junit.Test;
 import java.util.stream.IntStream;
 import static org.junit.Assert.*;

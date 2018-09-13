@@ -1,7 +1,7 @@
 package edu.iastate.cs228.proj1;
 
 /*
- * @author
+ * @author Charles Young
  */
 
 public class CodingDNASequence extends DNASequence {
@@ -50,8 +50,7 @@ public class CodingDNASequence extends DNASequence {
     public char[] translate() {
         StringBuilder temp = new StringBuilder();
 
-        assert checkStartCodon()
-                : "No Start codon";
+        if (!checkStartCodon()) throw new RuntimeException("No Start codon");
         int i = 0;
         int j = 3;
         while (j < seqLength() + 1) {

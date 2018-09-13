@@ -1,10 +1,8 @@
 package edu.iastate.cs228.proj1;
-
-import org.junit.Test;
-
 /*
- * @author
+ * @author Charles Young
  */
+
 public class Sequence {
     protected char[] seqarr;
 
@@ -21,12 +19,13 @@ public class Sequence {
     public Sequence(char[] sarr) {
         String objName = this.getClass().getName();
         boolean isValid = false;
-        for (char c : sarr)
+        for (char c : sarr) {
             if (isValidLetter(c)) isValid = true;
             else {
                 isValid = false;
                 break;
             }
+        }
 
         if(!isValid) throw new IllegalArgumentException("Invalid sequence letter for class " + objName);
         seqarr = new char[sarr.length];

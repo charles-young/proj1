@@ -39,16 +39,16 @@ public class BioSeqData {
             System.out.println("Protein sequence: " + aaseq);
         }
 
-//  String probst = new String("T$G");
-//  Sequence seqobj = new Sequence( probst.toCharArray() );
+        //String probst = new String("T$G");
+        //Sequence seqobj = new Sequence( probst.toCharArray() );
 
-//  String probst2 = new String("TDG");
-//  DNASequence dnaseqobj = new DNASequence( probst2.toCharArray() );
+        //String probst2 = new String("TDG");
+        //DNASequence dnaseqobj = new DNASequence( probst2.toCharArray() );
 
-//  String probst3 = new String("TGCH");
-//  GenomicDNASequence gdnaobj = new GenomicDNASequence( probst3.toCharArray());
+        //String probst3 = new String("TGCH");
+        //GenomicDNASequence gdnaobj = new GenomicDNASequence( probst3.toCharArray());
 
-//  String probst4 = new String("BJU");
-//  ProteinSequence probj = new ProteinSequence( probst4.toCharArray());
+        //String probst4 = new String("BJU");
+        //ProteinSequence probj = new ProteinSequence( probst4.toCharArray());
     }
 }

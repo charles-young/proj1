@@ -1,11 +1,8 @@
 package edu.iastate.cs228.proj1;
 
 /*
- * @author
+ * @author Charles Young
  */
-
-import java.util.Arrays;
-import java.util.stream.IntStream;
 
 public class GenomicDNASequence extends DNASequence {
     private boolean[] iscoding;
@@ -89,32 +86,32 @@ public class GenomicDNASequence extends DNASequence {
      * @throws IllegalStateException    See {@link #extractExons(int[])}
      */
     public char[] extractExons(int[] exonpos) {
-        int[] exonposCopy = exonpos.clone();
-        Arrays.sort(exonposCopy);
-
         if (exonpos.length == 0 || exonpos.length % 2 == 1)
             throw new IllegalArgumentException("Empty or odd number of array elements");
 
-        if (IntStream.of(exonpos).anyMatch(x -> x < 0) || IntStream.of(exonpos).anyMatch(x -> x >= super.seqLength()))
-            throw new IllegalArgumentException("Exon position is out of bound");
+        for (int e : exonpos) {
+            if (e >= super.seqLength() || e < 0) {
+                throw new IllegalArgumentException("Exon position is out of bound");
+            }
+        }
 
         for (int codingPos : exonpos) {
             if (!iscoding[codingPos]) {
                 throw new IllegalStateException("Noncoding position is found " + codingPos);
             }
         }
-
-        char[] exons = new char[
-                IntStream.iterate(0, x -> x < exonpos.length, x -> x + 2).map(x -> exonpos[x + 1] - exonpos[x] + 1).sum()
-                ];
-        int l = 0;
+        for (int i = 0; i < exonpos.length - 1; i++) {
+            if (exonpos[i] > exonpos[i + 1]) {
+                throw new IllegalArgumentException("Exon positions are not in order");
+            }
+        }
+        StringBuilder exons = new StringBuilder();
         for (int i = 0; i < exonpos.length; i += 2) {
             for (int j = exonpos[i]; j < exonpos[i + 1] + 1; j++) {
-                exons[l] = super.seqarr[j];
-                l++;
+                exons.append(super.seqarr[j]);
             }
         }
 
-        return exons;
+        return exons.toString().toCharArray();
     }
 }
